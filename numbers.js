@@ -1,6 +1,7 @@
 const BASE_TWO = [0, 1]
 const BASE_TEN = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 const BASE_ABC = ['a', 'b', 'c']
+const BASE_HEXA = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'A', 'B', 'C', 'D', 'E', 'F']
 
 const incrementDigit = (base, digit) => {
   digit = digit || base[0]
@@ -32,12 +33,9 @@ const count = (base, number) => {
 
 
 const main = () => {
-  count(BASE_ABC, 0); 
-  count(BASE_ABC, 1); 
-  count(BASE_ABC, 2); 
-  count(BASE_ABC, 3); 
-  count(BASE_ABC, 4); 
-  count(BASE_ABC, 5); 
+  for (let i = 0; i < 128; i++) {
+    count(BASE_HEXA, i)
+  }
 };
 
 document.addEventListener("DOMContentLoaded", function() {
