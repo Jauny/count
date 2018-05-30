@@ -54,7 +54,7 @@ const app = new Vue({
   el: '#app',
   data: {
     number: 0,
-    base: 16
+    base: 10
   },
   computed: {
     formatCount: function() {
