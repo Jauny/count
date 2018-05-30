@@ -1,5 +1,45 @@
 <head>
-  <script type="text/javascript" src="numbers.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 <body>
+  <div id="num"></div>
+
+  <hr/>
+
+  <div id="app">
+    <h1>{{ formatCount }}</h1>
+
+    <table border="1">
+      <tr>
+        <td>base {{base}}</td>
+        <td>number <input v-model="number"></td>
+      </tr>
+      <tr>
+        <td>
+          <input type="radio" name="base" v-model="base" value="2">2</input>
+          <input type="radio" name="base" v-model="base" value="3">3</input>
+          <input type="radio" name="base" v-model="base" value="10">10</input>
+          <input type="radio" name="base" v-model="base" value="16">16</input>
+        </td>
+        <td>
+          <input type="range" min=0 max=100 v-model.number="number"></p>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <hr/>
+
+  <div id="colors" v-bind:style="{backgroundColor: 'rgb(' + [red, green, blue] + ')'}" >
+    <h1>Color converter</h1>
+    <div>
+      <span>{{ red }}, {{ green }}, {{ blue }}</span> | 
+      <span>#{{ hexa.red }}{{ hexa.green }}{{ hexa.blue }}</span>
+    </div>
+    <input type="range" min=0 max=255 v-model="red">
+    <input type="range" min=0 max=255 v-model="green">
+    <input type="range" min=0 max=255 v-model="blue">
+  </div>
+
+  <script type="text/javascript" src="numbers.js"></script>
 </body>
