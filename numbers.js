@@ -80,34 +80,3 @@ const colors = new Vue({
     }
   }
 });
-
-
-class CounterView {
-  constructor(base, digits) {
-    this.base = base
-    this.digits = digits
-  }
-
-  render() {
-    const pad = this.base[0].toString().repeat(5)
-    const digits = this.digits.reverse().join('')
-    const result = pad.substring(0, pad.length - digits.length) + digits
-    document.getElementById('num').innerHTML = result
-  }
-}
-
-document.addEventListener("DOMContentLoaded", function() {
-  let view = new CounterView(BASE_HEXA, [0])
-  view.render()
-
-  let count = 127
-  let index = 0
-  const counter = setInterval(() => {
-    view = new CounterView(BASE_HEXA, Counter.count(BASE_HEXA, index))
-    view.render()
-    index++
-    if (count-- <= 0) {
-      clearInterval(counter)
-    }
-  }, 50)
-});
