@@ -1,5 +1,26 @@
 <head>
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <style>
+    .counter-slider {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      column-gap: 1em;
+      align-items: center;
+    }
+    .counter-slider .number-input {
+      width: 30px;
+    }
+    
+    .color-slider {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      column-gap: 1em;
+      align-items: center;
+    }
+    .color-slider .colors {
+      text-align: right;
+    }
+  </style>
 </head>
 <body>
   <div id="num"></div>
@@ -7,38 +28,37 @@
   <hr/>
 
   <div id="app">
-    <h1>{{ formatCount }}</h1>
-
-    <table border="1">
-      <tr>
-        <td>base {{base}}</td>
-        <td>number <input v-model="number"></td>
-      </tr>
-      <tr>
-        <td>
+    <div class="counter-slider">
+      <div><h1 style="text-align: right">{{ formatCount }}</h1></div>
+      <div>
+        <div>
           <input type="radio" name="base" v-model="base" value="2">2</input>
           <input type="radio" name="base" v-model="base" value="3">3</input>
           <input type="radio" name="base" v-model="base" value="10">10</input>
           <input type="radio" name="base" v-model="base" value="16">16</input>
-        </td>
-        <td>
-          <input type="range" min=0 max=100 v-model.number="number"></p>
-        </td>
-      </tr>
-    </table>
+        </div>
+        <div>
+          <input class="number-input" v-model="number">
+          <input type="range" min=0 max=100 v-model.number="number">
+        </div>
+      </div>
+    </div>
   </div>
 
   <hr/>
 
   <div id="colors" v-bind:style="{backgroundColor: 'rgb(' + [red, green, blue] + ')'}" >
-    <h1>Color converter</h1>
-    <div>
-      <span>{{ red }}, {{ green }}, {{ blue }}</span> | 
-      <span>#{{ hexa.red }}{{ hexa.green }}{{ hexa.blue }}</span>
+    <div class="color-slider">
+      <div class="colors">
+        <div>{{ red }}, {{ green }}, {{ blue }}</div>
+        <div>#{{ hexa.red }}{{ hexa.green }}{{ hexa.blue }}</div>
+      </div>
+      <div>
+        <input type="range" min=0 max=255 v-model="red">
+        <input type="range" min=0 max=255 v-model="green">
+        <input type="range" min=0 max=255 v-model="blue">
+      </div>
     </div>
-    <input type="range" min=0 max=255 v-model="red">
-    <input type="range" min=0 max=255 v-model="green">
-    <input type="range" min=0 max=255 v-model="blue">
   </div>
 
   <script type="text/javascript" src="numbers.js"></script>
