@@ -66,9 +66,9 @@ const app = new Vue({
 const colors = new Vue({
   el: '#colors',
   data: {
-    red: 250,
-    green: 105,
-    blue: 0
+    red: 167,
+    green: 219,
+    blue: 216
   },
   computed: {
     hexa: function() {
